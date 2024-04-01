@@ -12,16 +12,17 @@ const express = require("express");
 const app = express();
 const port = 9001;
 
-// console.log(data);
-
-// console.log(data.country.isoCode);
-
-// console.log(data.city.names.en);
-
-// GET /users 路由，用于获取所有用户列表
 app.get("/:ip", (req, res) => {
 	const ip = req.params.ip;
-	data = reader.city(ip);
+	try {
+		data = reader.city(ip);
+	} catch (error) {
+		if (error.message === "The address " + ip + " is not in the database") {
+			return res.status(404).send(error.message);
+		} else {
+			return res.status(500).send("Internal Server Error");
+		}
+	}
 	res.json(data);
 });
 
