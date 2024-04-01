@@ -13,7 +13,7 @@ const app = express();
 const port = 9001;
 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://ip.haruka.hk');
+    res.setHeader('Access-Control-Allow-Origin', 'https://ip.haruka.hk');
     res.setHeader('Access-Control-Allow-Methods', 'GET');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
