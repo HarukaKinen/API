@@ -1,9 +1,11 @@
 const fs = require("fs");
 const Reader = require("@maxmind/geoip2-node").Reader;
-// Typescript:
-// import { Reader } from '@maxmind/geoip2-node';
+const path = require("path");
 
-const dbBuffer = fs.readFileSync("./data/GeoLite2-City.mmdb");
+const dbBuffer = fs.readFileSync(
+	path.join(__dirname, "data", "GeoLite2-City.mmdb")
+);
+
 const reader = Reader.openBuffer(dbBuffer);
 
 const express = require("express");
