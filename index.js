@@ -2,9 +2,7 @@ const fs = require("fs");
 const Reader = require("@maxmind/geoip2-node").Reader;
 const path = require("path");
 
-const dbBuffer = fs.readFileSync(
-	path.join(__dirname, "data", "GeoLite2-City.mmdb")
-);
+const dbBuffer = fs.readFileSync(path.join(__dirname, "data", "GeoLite2.mmdb"));
 
 const reader = Reader.openBuffer(dbBuffer);
 
@@ -13,10 +11,13 @@ const app = express();
 const port = 9001;
 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://ip.haruka.hk');
-    res.setHeader('Access-Control-Allow-Methods', 'GET');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    next();
+	res.setHeader("Access-Control-Allow-Origin", "https://ip.haruka.hk");
+	res.setHeader("Access-Control-Allow-Methods", "GET");
+	res.setHeader(
+		"Access-Control-Allow-Headers",
+		"Content-Type, Authorization"
+	);
+	next();
 });
 
 app.get("/:ip", (req, res) => {
