@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 app.get("/:ip", (req, res) => {
 	const ip = req.params.ip;
 	try {
-		data = reader.city(ip);
+		data = reader.country(ip);
 	} catch (error) {
 		if (error.message === "The address " + ip + " is not in the database") {
 			return res.status(404).send(error.message);
