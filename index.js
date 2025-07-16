@@ -16,7 +16,7 @@ const {
 	DB_PASS = "",
 	DB_NAME = "",
 	DB_PORT = 3306,
-	API_PREFIX = "/api/v1",
+	API_PREFIX = "/v1",
 } = process.env;
 
 const pool = mysql.createPool({
